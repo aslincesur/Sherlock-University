@@ -1,0 +1,459 @@
+:root {
+    --primary: #f0f0f0;
+    --secondary: #a3a3a3;
+    --accent: #b08d55; /* A classic bronze/gold for the detective vibe */
+    --accent-glow: rgba(176, 141, 85, 0.5);
+    --bg-dark: #070709;
+    --bg-light: #111116;
+    --glass-bg: rgba(20, 20, 25, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-dark);
+    color: var(--primary);
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: radial-gradient(circle at top right, rgba(20,20,30,1) 0%, var(--bg-dark) 100%);
+    min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, .logo {
+    font-family: var(--font-heading);
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
+    position: relative;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent);
+    border-radius: 2px;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--glass-border);
+    transition: all 0.4s ease;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    background: url('assets/hero-bg.png') no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(7,7,9,0.3) 0%, rgba(7,7,9,0.8) 60%, rgba(7,7,9,1) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: var(--secondary);
+    margin-bottom: 3rem;
+    letter-spacing: 4px;
+    font-style: italic;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    color: var(--bg-dark);
+    background-color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
+    border: 1px solid var(--accent);
+}
+
+.btn:hover {
+    background-color: transparent;
+    color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow);
+}
+
+/* Sections */
+section {
+    padding: 8rem 5%;
+    position: relative;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-section {
+    background-color: var(--bg-dark);
+    position: relative;
+}
+
+.about-section::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 40%;
+    height: 100%;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+    opacity: 0.1;
+    pointer-events: none;
+}
+
+.text-content p {
+    color: var(--secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.quote-box {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    font-size: 6rem;
+    font-family: var(--font-heading);
+    color: var(--accent);
+    opacity: 0.3;
+    line-height: 1;
+}
+
+blockquote {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.author {
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+/* Announcements Section */
+.announcements-section {
+    background-color: var(--bg-light);
+}
+
+.announcements-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.announcement-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.announcement-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 15px var(--accent-glow);
+    border-color: rgba(176, 141, 85, 0.3);
+}
+
+.announcement-card .date {
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.announcement-card h3 {
+    font-size: 1.4rem;
+    color: var(--primary);
+    margin-bottom: 0.8rem;
+    font-family: var(--font-heading);
+}
+
+.announcement-card p {
+    color: var(--secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* Characters Section */
+.characters-section {
+    background-color: var(--bg-dark);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.cards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.6), 0 0 15px var(--accent-glow);
+    border-color: rgba(176, 141, 85, 0.3);
+}
+
+.card-image {
+    height: 250px;
+    background-color: #1a1a24;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.card-image::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 50%;
+    background: linear-gradient(to top, var(--glass-bg), transparent);
+}
+
+/* Fallback colors for card images since we don't have perfect images for all */
+.sherlock-bg { background: linear-gradient(135deg, #0f172a, #111827); position: relative; }
+.sherlock-bg::before { content: 'S'; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family: var(--font-heading); font-size: 6rem; color: rgba(255,255,255,0.05); }
+
+.watson-bg { background: linear-gradient(135deg, #1e293b, #0f172a); position: relative; }
+.watson-bg::before { content: 'W'; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family: var(--font-heading); font-size: 6rem; color: rgba(255,255,255,0.05); }
+
+.moriarty-bg { background: linear-gradient(135deg, #271212, #000000); position: relative; }
+.moriarty-bg::before { content: 'M'; position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family: var(--font-heading); font-size: 6rem; color: rgba(255,255,255,0.05); }
+
+
+.card-content {
+    padding: 2rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.role {
+    color: var(--accent);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Footer */
+footer {
+    background-color: #030304;
+    padding: 4rem 5%;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-content p:first-child {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.copyright {
+    color: #555;
+    font-size: 0.85rem;
+}
+
+/* Animations */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    visibility: hidden;
+    transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                visibility 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+
+/* Responsive */
+@media (max-width: 900px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2rem; }
+}
+
+@media (max-width: 600px) {
+    .nav-links { display: none; } /* Simple approach for mobile */
+    h1 { font-size: 2.5rem; }
+}
